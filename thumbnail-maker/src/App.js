@@ -9,8 +9,6 @@ function App() {
   const [isLight, setIsLight] = useState(true);
   const [imageBackground, setImageBackground] = useState(false);
 
-  const [isDownloadReady, setIsDownloadReady] = useState(false);
-
   const changeTitle = (e) => setTitle(e.target.value);
   const changeDescription = (e) => setDescription(e.target.value);
 
