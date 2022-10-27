@@ -2,6 +2,7 @@ import styles from './main.module.css';
 import { useState } from 'react';
 import html2canvas from 'html2canvas';
 import './App.css';
+import Poster from './poster';
 
 function App() {
   const [title, setTitle] = useState('Title');
@@ -34,7 +35,7 @@ function App() {
     <div className={styles.container}>
       <div className={styles.template} style={{ background: '9b9fcc' }}>
         <div className={styles.header}>
-          <h1>Thumnail for Cobb</h1>
+          <h2>Thumnail for Cobb</h2>
         </div>
 
         <div
@@ -81,6 +82,8 @@ function App() {
           <button onClick={downloadAsImage}>Download</button>
         </div>
       </div>
+
+      <Poster />
     </div>
   );
 }
