@@ -3,6 +3,7 @@ import { useState } from 'react';
 import html2canvas from 'html2canvas';
 import './App.css';
 import Poster from './poster';
+import axios from 'axios';
 
 function App() {
   const [title, setTitle] = useState('Title');
@@ -16,11 +17,19 @@ function App() {
   const changeTheme = () => setIsLight((prev) => !prev);
 
   const getRandomBackgroundImage = () => {
-    fetch('https://source.unsplash.com/1600x900/?abstract').then((res) => setImageBackground(res.url));
+    axios
+      .get(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_SERVICE_KEY}`, {
+        topics: 'abstract',
+      })
+      .then((res) => setImageBackground(res.data.url.regular));
   };
 
   const getBlurImageBackground = () => {
-    fetch('https://source.unsplash.com/1600x900/?blur').then((res) => setImageBackground(res.url));
+    axios
+      .get(`https://api.unsplash.com/photos/random?client_id=${process.env.REACT_APP_SERVICE_KEY}`, {
+        topics: 'blur',
+      })
+      .then((res) => setImageBackground(res.data.urls.regular));
   };
 
   const noImageBackground = () => setImageBackground(false);
